@@ -1,0 +1,1614 @@
+<MainWidget@BoxLayout>:
+	orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (0.392,0.902,1, .6)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+			
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+		pos: 0, 550
+        canvas.before:
+            Color:
+				rgba: (1, 0, 0, 0.6)
+            Rectangle:
+                size: self.size
+                pos: 0,550
+	FloatLayout:
+        Label:
+			pos: 40,305
+            text: "Mathematics Revision Application"
+            bold: True
+            size_hint_x: .9
+			
+<HomeButton@Button>:
+	size_hint_x: 0.05
+	size_hint_y: 0.05
+	background_normal: ''
+	background_color: 0,0,0,0
+	Image:
+		source: 'Home_Icon.png'
+		y: 555
+		x: 748
+		size: 40, 40
+		allow_stretch: True		
+	
+<PowerButton@Button>:
+	size_hint_x: 0.05
+	size_hint_y: 0.05
+	background_normal: ''
+	background_color: 0,0,0,0
+	Image:
+		source: 'Power_Icon.png'
+		y: 550
+		x: 0
+		size: 45, 45
+		allow_stretch: True	
+
+<LoginScreen>:
+	id: login_screen
+	MainWidget
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 275, 170
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            size_hint_y: None
+            height: 100
+            TextInput:
+				id: username_field
+                hint_text: "Username"
+                multiline: False
+				focus: True
+				on_text_validate: password_field.focus = True
+            TextInput:
+				id: password_field
+                hint_text: "Password"
+                multiline: False
+				password: True
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 20
+			
+        Button:
+            text: "Sign In"
+            size_hint_y: None
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.LogIn()
+		
+        Label:
+            id: sp2
+            size_hint_y: None
+            height: 5
+		
+		Button:
+            text: "Register"
+            size_hint_y: None
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Register'
+			
+		Label:
+            id: sp3
+            size_hint_y: None
+            height: 20
+			
+		Button:
+            text: "Features and Details"
+            size_hint_y: None
+            height: 40
+            background_color: (1, 0, 0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Features'
+			
+<RegisterScreen>:
+	id: register_screen
+	MainWidget		
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100, 100
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: 250
+            TextInput:
+				padding: 10
+				id: Fname_field
+                hint_text: "Enter your First Name"
+                multiline: False
+				focus: True
+				on_text_validate: Lname_field.focus = True
+            TextInput:
+				id: Lname_field
+				padding: 10
+                hint_text: "Enter your Last Name"
+                multiline: False
+				on_text_validate: email_field.focus = True
+			TextInput:
+				id: email_field
+				padding: 10
+                hint_text: "Enter your Email"
+                multiline: False
+				on_text_validate: NewPwd_field.focus = True
+			TextInput:
+				id: NewPwd_field
+				padding: 10
+                hint_text: "Enter a Password"
+                multiline: False
+				on_text_validate: RePwd_field.focus = True
+				password: True
+			TextInput:
+				id: RePwd_field
+				padding: 10
+                hint_text: "Retype your Password"
+                multiline: False
+				on_text_validate: StudentS_field.focus = True
+				password: True
+			TextInput:
+				id: StudentS_field
+				padding: 10
+                hint_text: "Are you a Student or Teacher?"
+                multiline: False
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 30
+			
+        Button:
+            text: "Register Now"
+            size_hint_y: None
+			pos: (0,0)
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.CreateAcc()
+		
+		Label:
+            id: sp
+            size_hint_y: None
+            height: 15
+	
+		Button:
+            text: "Back to Login"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Login'
+		
+
+<HomeScreen>:
+	id: home_screen
+	MainWidget
+	FloatLayout:
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+	BoxLayout:
+		size_hint_y: 0.333
+		pos: 0, 0
+		canvas.before:
+			Color:
+				rgba: (0.78,0.39,0.78, .6)
+			Rectangle:
+				size: 267,550
+				pos: 0,0
+	FloatLayout:
+		size: self.size
+		Label:
+			markup: True
+			text: "[size=20][u][b]Revise[/b][/u][/size]"
+			pos: (-275,200)
+		Button:
+			text: "Calculus"
+			pos: (65, 380)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'Calculus'
+		Button:
+			text: "Statistics"
+			pos: (65, 300)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'StatRevision'
+		Button:
+			text: "Trigonometry"
+			pos: (65, 220)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'Trig'
+		Button:
+			text: "Take Test"
+			pos: (65, 140)
+			size_hint: (0.15,0.10)	
+			on_release: root.manager.current = 'TopicTest'
+	BoxLayout:
+		size_hint_y: 0.333
+		pos: 0,400
+		canvas.before:
+			Color:
+				rgba: (0,0.588,1, .6)
+			Rectangle:
+				size: 267,550
+				pos: 267,0
+	
+	FloatLayout:
+		size: self.size
+		Label:
+			markup: True
+			text: "[size=20][u][b]Revision Games[/b][/u][/size]"
+			pos: (0,200)
+		Button:
+			text: "Maths Invader"
+			pos: (340, 380)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'MathsInvader'
+		Button:
+			text: "Pong"
+			pos: (340, 300)
+			size_hint: (0.15,0.10)
+		Button:
+			text: "Snake"
+			pos: (340, 220)
+			size_hint: (0.15,0.10)
+
+	BoxLayout:
+		size_hint_y: 0.333
+		pos: 300,400
+		canvas.before:
+			Color:
+				rgba: (0,0.78,0.39, .6)
+			Rectangle:
+				size: 267,550
+				pos: 534,0
+
+	FloatLayout:
+		size: self.size
+		Label:
+			markup: True
+			text: "[size=20][u][b]Progress Tracking[/b][/u][/size]"
+			pos: (275,200)
+		Button:
+			text: "Results"
+			pos: (615, 380)
+			size_hint: (0.15,0.10)
+			on_release: root.Progress()
+		Button:
+			text: "Timetable"
+			pos: (615, 300)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'Timetable'
+		Button:
+			text: "Scheduled"
+			pos: (615, 220)
+			size_hint: (0.15,0.10)
+			on_release: root.manager.current = 'Schedule'
+			
+<FeatureScreen>:
+	id: feature_screen
+	MainWidget
+	BoxLayout:	
+		orientation: 'vertical'
+		pos: 0, 0
+		padding: 100, 100, 100, 50
+		BoxLayout:
+			orientation: "vertical"
+			size_hint_y: None
+			height: 600
+			Label:
+				markup: True
+				text_size: self.size
+				text: "  [size=40][u][b]Features[/b][/u][/size] \n [size=20] - Personal Accounts \n - Games \n - Progress Tracking \n - Automatic Scheduling \n - Topic Tests \n - Revision Resources [/size]"
+				halign: 'center'
+				vallign: 'top'
+			Label:
+				id: sp5
+				size_hint_y: None
+				height: 150
+			
+			Button:
+				text: "Back to Login"
+				size_hint_y: None
+				padding: 0,25
+				height: 40
+				background_color: (1,0,0, 0.6)
+				background_normal: ''
+				on_release: root.manager.current = 'Login'
+
+
+			
+
+
+<CalculusScreen>:
+	id: calculus_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+			
+	BoxLayout:	
+		orientation: 'vertical'
+		pos: 0, 0
+		padding: 100, 100, 100, 50
+		BoxLayout:
+			orientation: "vertical"
+			size_hint_y: None
+			height: 600
+			Label:
+				markup: True
+				text_size: self.size
+				text: " [size=25][b] Welcome to the Calculus Revision Section [/b][/size]"
+				halign: 'center'
+				vallign: 'top'
+			Label:
+				id: sp5
+				size_hint_y: None
+				height: 375
+			
+			Button:
+				text: "Back to Home"
+				size_hint_y: None
+				padding: 0,25
+				height: 40
+				background_color: (1,0,0, 0.6)
+				background_normal: ''
+				on_release: root.manager.current = 'Home'
+	FloatLayout:
+		Button:
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			pos: 225,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"Maclaurin Series"
+			on_release: root.manager.current = 'Calculus1'
+		Button:
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			pos: 425,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"Graph Work"
+			on_release: root.manager.current = 'Calculus2'
+
+<CalculusSeries>:
+	id: calc1_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+	BoxLayout:
+		orientation: 'vertical'
+		canvas:
+			Rectangle:
+				source: 'Maclaurin\Maclaurin.gif'
+				size: 700,200
+				pos: 55,300
+	FloatLayout:
+		Label:
+			text: "Using the formula above: find the standard expansions for sin(x), cos(x) and arctan(x)"
+			pos: 10, -50
+		
+		Label:
+			text: "Use the following factorial function to work out the factorials"
+			pos: 20, -100
+		
+		Button: 
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			pos: 450,25
+			size_hint_x: 0.20
+			size_hint_y: 0.07
+			text:"Calculate"
+			on_release: root.giveFactorial()
+	
+	BoxLayout:
+        orientation: 'vertical'
+        padding: 100, 250
+		pos: 0,-220
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+			size_hint_x: 0.5
+            height: 30
+            TextInput:
+				id: Factorial
+                hint_text: "Enter the factorial number you need"
+                multiline: False
+				focus: True
+<CalculusGraphs>:
+	id: calc2_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		Label:
+			markup: True
+			text: "[size=25][u][b]Instructions[/b][/u][/size]"
+			pos: -300, 210
+		Label:
+			markup: True
+			text: "You could plot any graph you would like using this page to test out your skils for integration and differentiation"
+			pos: 0, 180
+		Label:
+			markup: True
+			text: "[b]Graph It!: [/b]\nJust type your equation into the Y=... field\nThe variable is to be plotted is always an x"
+			pos: -225, 140	
+		Label: 
+			text: "To multiply a number by x type: n*x where n is a number of your choosing\nTo raise to the power of n, type x**n\nYou can combine functions together for example x**2+7*x"
+			pos: -122, 87
+		Label:
+			markup: True
+			text: "[b]Gradient: [/b] \nType in the x-coordinate to find the gradient at that point!\nUse this function to check if you have differentiated correctly at a given point"
+			pos: -110, 35
+		Label:
+			markup: True
+			text: "[b]Area: [/b] \nType in the Limits of your Integral to find the Area between those points!\nUse this function to check if you have integrated correctly at the given limits"
+			pos: -112, -18
+	FloatLayout:
+		size: self.size
+		Button:
+			text:"Gradient"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,148
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.FindGradient()
+		Button:
+			text:"Area"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,73
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.FindArea()
+		Button:
+			text:"Undo"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,25
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.Undo()
+		
+		Button:
+			text:"Graph It!"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,223
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.AcquireDetails()
+		TextInput:
+			id: graph_equation
+			hint_text: "Y=..."
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 50, 210
+		TextInput:
+			id: equation_x1
+			hint_text: "Domain Lower Limit"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 250, 210
+		TextInput:
+			id: equation_x2
+			hint_text: "Domain Upper Limit"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 450, 210
+		TextInput:
+			id: gradient_point
+			hint_text: "Enter the x-coordinate of a point you want the gradient of."
+			size_hint_x: 0.7
+			size_hint_y: 0.05
+			pos: 50, 135
+		TextInput:
+			id: area_start
+			hint_text: "Enter the lower limit for your integral"
+			size_hint_x: 0.325
+			size_hint_y: 0.05
+			pos: 50, 60
+		TextInput:
+			id: area_end
+			hint_text: "Enter the upper limit for your integral"
+			size_hint_x: 0.325
+			size_hint_y: 0.05
+			pos: 350, 60
+
+
+<MathsInvadersScreen>:
+	id: invader_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+			
+	BoxLayout:	
+		orientation: 'vertical'
+		pos: 0, 0
+		padding: 100, 100, 100, 50
+		BoxLayout:
+			orientation: "vertical"
+			size_hint_y: None
+			height: 600
+			Label:
+				markup: True
+				text_size: self.size
+				text: " [size=25][b] Welcome to the Maths Invaders Game [/b][/size]"
+				halign: 'center'
+				vallign: 'top'
+			Label:
+				id: sp5
+				size_hint_y: None
+				height: 375
+			
+			Button:
+				text: "Back to Home"
+				size_hint_y: None
+				padding: 0,25
+				height: 40
+				background_color: (1,0,0, 0.6)
+				background_normal: ''
+				on_release: root.manager.current = 'Home'
+	FloatLayout:
+		Button:
+			background_normal: ''
+			background_color: 0,0,0.8,1
+			pos: 225,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"View Leaderboards"
+			on_release: root.manager.current = 'ViewLeaderboard'
+		Button:
+			background_normal: ''
+			background_color: 0,0,0.8,1
+			pos: 425,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"Game Screen"
+			on_release: root.manager.current = 'MainGame'
+
+<ViewLeaderboardScreen>:
+	on_enter: root.ViewLeaderboard()
+	id: view_leaderboard_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+		Button:
+            text: "Back to Main Game Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'MathsInvader'
+		
+		Label:
+			text: root.Leaderboard
+			pos: 0,0
+
+<MathsInvadersGame>:
+	id: main_game_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+			
+		Button:
+            text: "Back to Main Game Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'MathsInvader'
+			
+		Button:
+            text: "Start Game"
+            size_hint_y: None
+			pos: (240,290)
+			padding: 0,25
+            size_hint_x: 0.4
+			height: 50
+            background_color: (0,0,1, 1)
+            background_normal: ''
+			on_release: root.MathsInvadersGame()
+			
+<TopicTestScreen>:
+	id: topictest_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+			
+		Label:
+			markup: True
+			text: "[size=25][u][b]Instructions to Take Test[/b][/u][/size]"
+			pos: -230, 210
+		Label:
+			markup: True
+			text: "You have the option to choose which topic you would like to be tested on"
+			pos: -122, 180
+		Label:
+			markup: True
+			text: "Just check the box next to the name of the topic you would like to be included field\nThen press the Take Test button!"
+			pos: -95, 150	
+		Label:
+			markup: True
+			text: "The test will be 5 questions long and can take between 15 minutes to 45 minutes to complete\nThis depends on the difficulty"
+			pos: -60, 115	
+		Label:
+			markup: True
+			text: "The difficulty will be dynamically changing depending on how well you are doing\nThis will be shown next to the question"
+			pos: -106, 75	
+	FloatLayout:
+		CheckBox:
+			id: calculus_check
+			pos:-270,-5
+			canvas.before:
+				Color:
+					rgb: 0,0,0
+				Rectangle:
+					pos:self.center_x-8, self.center_y-8
+					size:[25,25]
+				Color:
+					rgb: 1,1,1
+				Rectangle:
+					pos:self.center_x-7, self.center_y-7
+					size:[23,23]
+		
+		Label: 
+			markup:True
+			text: "[size=21][b]Calculus[/b][/size]"
+			pos: -325, 0
+			
+		CheckBox:
+			id: trig_check
+			pos:30,-5
+			canvas.before:
+				Color:
+					rgb: 0,0,0
+				Rectangle:
+					pos:self.center_x-8, self.center_y-8
+					size:[25,25]
+				Color:
+					rgb: 1,1,1
+				Rectangle:
+					pos:self.center_x-7, self.center_y-7
+					size:[23,23]
+		
+		Label: 
+			markup:True
+			text: "[size=21][b]Trigonometry[/b][/size]"
+			pos: -50, 0
+	
+		CheckBox:
+			id: stat_check
+			pos:310,-5
+			canvas.before:
+				Color:
+					rgb: 0,0,0
+				Rectangle:
+					pos:self.center_x-8, self.center_y-8
+					size:[25,25]
+				Color:
+					rgb: 1,1,1
+				Rectangle:
+					pos:self.center_x-7, self.center_y-7
+					size:[23,23]
+		
+		Label: 
+			markup:True
+			text: "[size=21][b]Statistics[/b][/size]"
+			pos: 250, 0
+		
+		
+		Button:
+			text: "Take Test!"
+			size_hint_y: None
+			padding: 0,25
+			height: 40
+			background_color: (1, 0, 0, 0.6)
+			background_normal: ''
+			on_release: root.StoreQA()
+
+
+<Trigonometry>:
+	id: trig_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+			
+		Label:
+			markup: True
+			text: "[size=25][u][b]Trigonometry - Radians[/b][/u][/size]"
+			pos: -230, 210
+		Label:
+			markup: True
+			text: "Radians are another type of angle measurement which we can use"
+			pos: -140, 180
+		Label:
+			markup: True
+			text: "1 Radian is defined as the: \n'angle made at the center of a circle by an arc whose length is equal to the radius of the circle.'"
+			pos: -45, 150	
+		Label:
+			markup: True
+			text: "[b]360 degrees is equal to 2 pi radians![/b]"
+			pos: -30, 110	
+		Label:
+			markup: True
+			text: "You can use the following conversion tools on this page to practice converting between degrees and radians"
+			pos: 0, 75	
+		Label:
+			markup: True
+			text: "You can also plot a triangle and practice using radians to work out the angles of the triangle!"
+			pos: -52, 45	
+		Label:
+			markup: True
+			text: "Just write the co-ordinates of the points like this: [x,y]"
+			pos: -180, 20
+	FloatLayout:
+		TextInput:
+			id: xy_1
+			hint_text: "Co-ordinates 1"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 50, 210
+		TextInput:
+			id: xy_2
+			hint_text: "Co-ordinates 2"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 250, 210
+		TextInput:
+			id: xy_3
+			hint_text: "Co-ordinates 3"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 450, 210
+		TextInput:
+			id: angle_degrees
+			hint_text: "Enter your angle in DEGREES to convert to radians"
+			size_hint_x: 0.7
+			size_hint_y: 0.05
+			pos: 50, 135
+		TextInput:
+			id: angle_radians
+			hint_text: "Enter your angle in RADIANS to convert to degrees"
+			size_hint_x: 0.7
+			size_hint_y: 0.05
+			pos: 50, 60
+		
+		Button:
+			text:"Convert"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,148
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.ConvertDegrees()
+		Button:
+			text:"Convert"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,73
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.ConvertRadians()
+		
+		Button:
+			text:"Plot Triangle"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,223
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.PlotTriangle()
+			
+			
+<StatScreen>:
+	id: stat_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		Label:
+			markup: True
+			text: "[size=25][u][b]Statistics[/b][/u][/size]"
+			pos: -340, 210
+		Label:
+			markup: True
+			text: "On this page, you can practice your ability to calculate statistical measures of central tendency"
+			pos: -80, 180
+		Label:
+			markup: True
+			text: "By pressing the '[b]Generate Data[/b]' Button, a list of numbers will be displayed and you can practice your calculations"
+			pos: -20, 150	
+		Label:
+			markup: True
+			text: "There is a Standard Deviation, Variance and Mean Calculator which can be used for a Normal Distribution\njust press the [b]StatCalc[/b] button!"
+			pos: -45, 110	
+		Label:
+			markup: True
+			text: "There are three Distribution functions (Binomial PD, CD and Normal PD) which you can use to calculate probabilities"
+			pos: -8, 75	
+		Label:
+			id: number_set
+			markup: True
+			text: root.data_set
+			pos: 0, 30	
+			bold: True
+	FloatLayout:
+		TextInput:
+			id: binomial_x
+			hint_text: "No. of Successes"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 50, 210
+		TextInput:
+			id: binomial_N
+			hint_text: "No. of Trials"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 250, 210
+		TextInput:
+			id: binomial_p
+			hint_text: "P(Success)"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 450, 210
+			
+		TextInput:
+			id: Cbinomial_x
+			hint_text: "Cumulative Success"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 50, 135
+		TextInput:
+			id: Cbinomial_N
+			hint_text: "No. of Trials"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 250, 135
+		TextInput:
+			id: Cbinomial_p
+			hint_text: "P(Success)"
+			size_hint_x: 0.20
+			size_hint_y: 0.05
+			pos: 450, 135
+			
+		TextInput:
+			id: normal_x
+			hint_text: "Enter a value that you would like to calculate the probability of being in the set"
+			size_hint_x: 0.7
+			size_hint_y: 0.05
+			pos: 50, 60
+			
+		Button:
+			text:"Binomial CD"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,148
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.CumulativeBinomial()
+		Button:
+			text:"Normal PD"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,73
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.NormalDistribution()
+		
+		Button:
+			text:"Binomial PD"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 650,223
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.BinomialInterface()
+			
+		Button:
+			text:"Generate Data"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 260,300
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.GenerateSet()
+		
+		Button:
+			text:"StatCalc"
+			size_hint_x: 0.15
+			size_hint_y: 0.01
+			pos: 415,300
+			background_normal: ''
+			background_color: 0.8,0,0.5,0.8
+			on_release: root.StatCalc()
+
+<ProgressScreen>:
+	id: progress_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+		Button:
+			text:"All Topics"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 50,150
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.All()
+		Button:
+			text:"Best Topic"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 250,150
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Best()
+		
+		Button:
+			text:"Worst Topic"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 450,150
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Worst()
+			
+		Button:
+			text:"Revise"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 650,150
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.manager.current = 'Home'
+
+		Button:
+			text:"Differentiation"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 50,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Differentiation()
+		
+		Button:
+			text:"Integration"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 250,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Integration()
+		Button:
+			text:"Statistics"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 450,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Statistics()
+		
+		Button:
+			text:"Trigonometry"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 650,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.Trigonometry()
+		Label:
+			text: root.user_data
+			pos: 0,80
+			
+
+<TeacherProgressScreen>:
+	id: teacher_progress_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+		TextInput:
+			id: student_email
+			hint_text:"Enter Student Email"
+			size_hint_x: 0.35
+			size_hint_y: 0.05
+			pos: 270,180
+
+		Button:
+			text:"Overall"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.18
+			size_hint_y: 0.08
+			pos: 140,125
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TOverall()
+		
+		Button:
+			text:"Best Topic"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.18
+			size_hint_y: 0.08
+			pos: 340,125
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TBest()
+			
+		Button:
+			text:"Worst Topic"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.18
+			size_hint_y: 0.08
+			pos: 540,125
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TWorst()
+
+		Button:
+			text:"Differentiation"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 50,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TDifferentiation()
+		
+		Button:
+			text:"Integration"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 250,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TIntegration()
+		Button:
+			text:"Statistics"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 450,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TStatistics()
+		
+		Button:
+			text:"Trigonometry"
+			color: 0.15,0.15,0.15,1
+			size_hint_x: 0.15
+			size_hint_y: 0.1
+			pos: 650,50
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			on_release: root.TTrigonometry()
+	BoxLayout:
+		size_hint_y: 0.333
+		pos: 0,200
+		Label:
+			text: root.student_data
+			
+<TimetableScreen>:
+	id: timetable_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+	BoxLayout:	
+		orientation: 'vertical'
+		pos: 0, 0
+		padding: 100, 100, 100, 50
+		BoxLayout:
+			orientation: "vertical"
+			size_hint_y: None
+			height: 600
+			Label:
+				markup: True
+				text_size: self.size
+				text: " [size=25][b] Welcome to the Timetable Screen[/b][/size]"
+				halign: 'center'
+				vallign: 'top'
+			Label:
+				id: sp5
+				size_hint_y: None
+				height: 375
+			
+			Button:
+				text: "Back to Home"
+				size_hint_y: None
+				padding: 0,25
+				height: 40
+				background_color: (1,0,0, 0.6)
+				background_normal: ''
+				on_release: root.manager.current = 'Home'
+	FloatLayout:
+		Button:
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			pos: 225,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"Create Timetable"
+			on_release: root.manager.current = 'CreateTimetable'
+		Button:
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			pos: 425,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"View Timetable"
+			on_release: root.manager.current = 'ViewTimetable'
+			
+<CreateTimetableScreen>:
+	id: create_timetable_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100, 100
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: 250
+            TextInput:
+				padding: 9
+				id: day_number
+                hint_text: "Enter Day Number (from 1-5 with 1 being Monday and 5 being Friday)"
+                multiline: False
+				focus: True
+				on_text_validate: period_one.focus = True
+            TextInput:
+				id: period_one
+				padding: 10
+                hint_text: "Enter the Period 1 Lesson or type FREE if you have no lesson"
+                multiline: False
+				on_text_validate: period_two.focus = True
+			TextInput:
+				id: period_two
+				padding: 10
+                hint_text: "Enter the Period 2 Lesson or type FREE if you have no lesson"
+                multiline: False
+				on_text_validate: period_three.focus = True
+			TextInput:
+				id: period_three
+				padding: 10
+                hint_text: "Enter the Period 3 Lesson or type FREE if you have no lesson"
+                multiline: False
+				on_text_validate: period_four.focus = True
+			TextInput:
+				id: period_four
+				padding: 10
+                hint_text: "Enter the Period 4 Lesson or type FREE if you have no lesson"
+                multiline: False
+				on_text_validate: period_five.focus = True
+			TextInput:
+				id: period_five
+				padding: 10
+                hint_text: "Enter the Period 5 Lesson or type FREE if you have no lesson"
+                multiline: False
+				on_text_validate: period_six.focus = True
+			TextInput:
+				id: period_six
+				padding: 10
+                hint_text: "Enter the Period 6 Lesson or type FREE if you have no lesson"
+                multiline: False
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 30
+			
+        Button:
+            text: "Add Timetable"
+            size_hint_y: None
+			pos: (0,0)
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.AddTimetable()
+		
+		Label:
+            id: sp
+            size_hint_y: None
+            height: 15
+	
+		Button:
+            text: "Back to Main Timetable Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Timetable'
+
+<ViewTimetableScreen>:
+	on_enter: root.ViewTimetable()
+	id: view_timetable_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+		Button:
+            text: "Back to Main Timetable Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Timetable'
+		
+		Label:
+			text: root.timetable
+			pos: 0,0
+		
+<ScheduleScreen>:
+	id: schedule_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+	BoxLayout:	
+		orientation: 'vertical'
+		pos: 0, 0
+		padding: 100, 100, 100, 50
+		BoxLayout:
+			orientation: "vertical"
+			size_hint_y: None
+			height: 600
+			Label:
+				markup: True
+				text_size: self.size
+				text: " [size=25][b] Welcome to the Schedule Screen[/b][/size]"
+				halign: 'center'
+				vallign: 'top'
+			Label:
+				id: sp5
+				size_hint_y: None
+				height: 375
+			
+			Button:
+				text: "Back to Home"
+				size_hint_y: None
+				padding: 0,25
+				height: 40
+				background_color: (1,0,0, 0.6)
+				background_normal: ''
+				on_release: root.manager.current = 'Home'
+	FloatLayout:
+		Button:
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			pos: 225,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"Request New\n    Meeting"
+			on_release: root.manager.current = 'CreateMeeting'
+		Button:
+			background_normal: ''
+			background_color: 0,0.75,0.05,1
+			pos: 425,275
+			size_hint_x: 0.18
+			size_hint_y: 0.15
+			text:"View Upcoming\n      Meetings"
+			on_release: root.manager.current = 'ViewMeeting'
+
+		
+<CreateMeetingScreen>:
+	id: create_timetable_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 100, 100
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: 250
+            TextInput:
+				padding: 20
+				id: preferred_day_number
+                hint_text: "Enter The Preferred Day Number For The 1-1 Meeting\n(from 1-5 with 1 being Monday and 5 being Friday)"
+                multiline: False
+				focus: True
+				on_text_validate: reason.focus = True
+            TextInput:
+				id: reason
+				padding: 20
+                hint_text: "Enter The Reason For The Meeting"
+                multiline: False
+				on_text_validate: teacher_email.focus = True
+			TextInput:
+				id: teacher_email
+				padding: 20
+                hint_text: "Enter Your Teacher's Email"
+                multiline: False
+	
+        Label:
+            id: sp
+            size_hint_y: None
+            height: 30
+			
+        Button:
+            text: "Request Meeting"
+            size_hint_y: None
+			pos: (0,0)
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.RequestMeeting()
+		
+		Label:
+            id: sp
+            size_hint_y: None
+            height: 15
+	
+		Button:
+            text: "Back to Main Schedule Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Schedule'
+			
+<ViewMeetingScreen>:
+	on_enter: root.ViewMeeting()
+	id: view_meeting_screen
+	MainWidget
+	FloatLayout:
+		HomeButton:
+			pos: 743, 560
+			on_release: root.manager.current = 'Home'
+		PowerButton:
+			pos: 330, 560
+			on_release: root.manager.current = 'Login'
+		
+		Button:
+            text: "Back to Main Schedule Screen"
+            size_hint_y: None
+			pos: (0,0)
+			padding: 0,25
+            height: 40
+            background_color: (1,0,0, 0.6)
+            background_normal: ''
+			on_release: root.manager.current = 'Schedule'
+		
+		Label:
+			text: root.user_schedule
+			pos: 0,0
+		
+		TextInput:
+			id: meeting_id
+			hint_text: "Enter the Schedule ID for the Meeting you would like to cancel"
+			pos: 20, 75
+			size_hint_x: 0.73
+			size_hint_y: 0.05
+		Button:
+			text: "Cancel Meeting"
+			size_hint_x: 0.2
+			size_hint_y: None 
+			pos: (620,75)
+            height: 30
+            background_color: (1,0,0, 1)
+            background_normal: ''
+			on_release: root.CancelMeeting()
+			
+<Manager>:
+	id: screen_manager
+	login_screen: login_screen
+	home_screen: home_screen
+	register_screen: register_screen
+	
+	LoginScreen:
+		id: login_screen
+		name: 'Login'
+		manager: screen_manager
+		
+	RegisterScreen:
+		id: register_screen
+		name: 'Register'
+		manager: screen_manager
+		
+	HomeScreen:
+		id:home_screen
+		name: 'Home'
+		manager: screen_manager
+	
+	FeatureScreen:
+		id:feature_screen
+		name: 'Features'
+		manager: screen_manager
+		
+	ProgressScreen:
+		id: progress_screen
+		name: 'Progress'
+		manager: screen_manager
+	
+	MathsInvadersScreen:
+		id:invader_screen
+		name: 'MathsInvader'
+		manager: screen_manager
+	
+	ViewLeaderboardScreen:
+		id: view_leaderboard_screen
+		name: 'ViewLeaderboard'
+		manager: screen_manager
+	
+	MathsInvadersGame:
+		id: main_game_screen
+		name: 'MainGame'
+		manager: screen_manager
+		
+	CalculusScreen:
+		id:calculus_screen
+		name: 'Calculus'
+		manager: screen_manager	
+	
+	CalculusSeries:
+		id: calc1_screen
+		name: 'Calculus1'
+		manager: screen_manager
+	
+	CalculusGraphs:
+		id: calc2_screen
+		name: 'Calculus2'
+		manager: screen_manager
+		
+	TopicTestScreen:
+		id: topictest_screen
+		name: 'TopicTest'
+		manager: screen_manager
+		
+	Trigonometry:
+		id: trig_screen
+		name: 'Trig'
+		manager: screen_manager
+		
+	StatScreen:
+		id: stat_screen
+		name: 'StatRevision'
+		manager: screen_manager
+	
+	TeacherProgressScreen:
+		id: teacher_progress_screen
+		name: 'TeacherProgress'
+		manager: screen_manager
+	
+	TimetableScreen:
+		id: timetable_screen
+		name: 'Timetable'
+		manager: screen_manager
+	
+	CreateTimetableScreen:
+		id: create_timetable_screen
+		name: 'CreateTimetable'
+		manager: screen_manager
+	
+	ViewTimetableScreen:
+		id: view_timetable_screen
+		name: 'ViewTimetable'
+		manager: screen_manager
+	
+	ScheduleScreen:
+		id: schedule_screen
+		name: 'Schedule'
+		manager: screen_manager
+		
+	CreateMeetingScreen:
+		id: create_meeting_screen
+		name: 'CreateMeeting'
+		manager: screen_manager
+		
+	ViewMeetingScreen:
+		id: view_meeting_screen
+		name: 'ViewMeeting'
+		manager: screen_manager
+		
+		
