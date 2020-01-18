@@ -82,14 +82,8 @@ class Stack():
     #Also have a method to check if the stack is empty
     def isEmpty(self):
         #checks if the stack equals an empty stack
-        if self.elements == []:
-            #if it is empty then true is returned by the method
-            return True
-        else:
-            #otherwise false is returned by the method
-            return False
-
-
+        return self.elements == []
+            
 ''''Pop Up Window Function''' 
 #Defining my own general version of the popup tool kivy uses
 #This is to reduce code repetition and improve efficiency
@@ -233,10 +227,8 @@ class RegisterScreen(Screen, BoxLayout):
             #if email is unique, it is stored in a new variable to be used
             NewEmail = CreateUser
             #This conditional statement will check which type of user it is (student or teacher)
-            if NewStatus.lower() == "student":
-               NewStatus = True
-            else:
-               NewStatus = False
+            NewStatus = NewStatus.lower() == "student"
+        
             #Checks if the two entered passwords match each other
             if CreatePass != CheckPass:
                #if they don't match then a pop is used
@@ -640,12 +632,8 @@ class MathsInvadersGame(Screen):
             #an alien is from the student spaceship
             distance = math.sqrt(math.pow(t1.xcor()-t2.xcor(),2)+math.pow(t1.ycor()-t2.ycor(),2))
             #Checks the distance is less than 15 as that is when the alien would be touching the user
-            if distance < 15:
-                    #There is a collision so True is returned
-                    return True
-            else:
-                    #There is not a collision so False is returned
-                    return False
+            return distance < 15
+                    
      
     #Setting game as a function to be run when button is pressed  
     def MathsInvadersGame(self):
